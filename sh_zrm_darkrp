@@ -1,0 +1,161 @@
+TEAM_ZRMINE_MINER = DarkRP.createJob("Mason Miner", {
+	color = Color(255, 0, 0, 255),
+	model = {"models/player/martin/camprouge/recruerouge05.mdl"},
+	description = [[Mine ores for the Mason Order]],
+	weapons = {"zrms_pickaxe", "weapon_mfrp_lantern"},
+	command = "zrmine_retrominer01",
+	max = 4,
+	salary = 10,
+	admin = 0,
+	vote = false,
+	category = "Mason Order",
+	hasLicense = false
+})
+
+DarkRP.createCategory{
+	name = "RetroMiner",
+	categorises = "entities",
+	startExpanded = true,
+	color = Color(255, 107, 0, 255),
+	canSee = function(ply) return true end,
+	sortOrder = 104
+}
+
+DarkRP.createEntity("Gravel - Crate", {
+	ent = "zrms_gravelcrate",
+	model = "models/zerochain/props_mining/zrms_refiner_basket.mdl",
+	price = 50,
+	max = 6,
+	cmd = "buyzrms_gravelcrate",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Refiner - Crate", {
+	ent = "zrms_basket",
+	model = "models/zerochain/props_mining/zrms_refiner_basket.mdl",
+	price = 50,
+	max = 12,
+	cmd = "buyzrms_basket",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Storagecrate", {
+	ent = "zrms_storagecrate",
+	model = "models/zerochain/props_mining/zrms_storagecrate.mdl",
+	price = 10,
+	max = 6,
+	cmd = "buyzrms_storagecrate",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Mine Entrance", {
+	ent = "zrms_mineentrance_base",
+	model = "models/zerochain/props_mining/mining_entrance.mdl",
+	price = 20000,
+	max = 3,
+	cmd = "buyzrms_mineentrance_base",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Melter", {
+	ent = "zrms_melter",
+	model = "models/zerochain/props_mining/zrms_melter.mdl",
+	price = 1000,
+	max = 2,
+	cmd = "buyzrms_melter",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Rock Crusher", {
+	ent = "zrms_crusher",
+	model = "models/zerochain/props_mining/zrms_crusher.mdl",
+	price = 1000,
+	max = 3,
+	cmd = "buyzrms_crusher",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+local RefinerType = {}
+RefinerType["zrms_refiner_coal"] = {"Refinery - Coal", 500}
+RefinerType["zrms_refiner_iron"] = {"Refinery - Iron", 600}
+RefinerType["zrms_refiner_bronze"] = {"Refinery - Bronze", 700}
+RefinerType["zrms_refiner_silver"] = {"Refinery - Silver", 1200}
+RefinerType["zrms_refiner_gold"] = {"Refinery - Gold", 2000}
+
+for k, v in pairs(RefinerType) do
+	DarkRP.createEntity(v[1], {
+		ent = k,
+		model = "models/zerochain/props_mining/zrms_refiner.mdl",
+		price = v[2],
+		max = 2,
+		cmd = "buy" .. k,
+		allowed = TEAM_ZRMINE_MINER,
+		category = "RetroMiner"
+	})
+end
+
+DarkRP.createEntity("Conveyorbelt - Splitter", {
+	ent = "zrms_splitter",
+	model = "models/zerochain/props_mining/zrms_conveyorbelt_splitter.mdl",
+	price = 200,
+	max = 2,
+	cmd = "buyzrms_splitter",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Conveyorbelt - Inserter", {
+	ent = "zrms_inserter",
+	model = "models/zerochain/props_mining/zrms_inserter.mdl",
+	price = 200,
+	max = 2,
+	cmd = "buyzrms_inserter",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Conveyorbelt - Normal", {
+	ent = "zrms_conveyorbelt_n",
+	model = "models/zerochain/props_mining/zrms_conveyorbelt_normal.mdl",
+	price = 200,
+	max = 10,
+	cmd = "buyzrms_conveyorbelt_n",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Conveyorbelt - Small", {
+	ent = "zrms_conveyorbelt_s",
+	model = "models/zerochain/props_mining/zrms_conveyorbelt_small.mdl",
+	price = 200,
+	max = 5,
+	cmd = "buyzrms_conveyorbelt_s",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Conveyorbelt - Left", {
+	ent = "zrms_conveyorbelt_c_left",
+	model = "models/zerochain/props_mining/zrms_conveyorbelt_curved_left.mdl",
+	price = 200,
+	max = 5,
+	cmd = "buyzrms_conveyorbelt_c_left",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
+
+DarkRP.createEntity("Conveyorbelt - Right", {
+	ent = "zrms_conveyorbelt_c_right",
+	model = "models/zerochain/props_mining/zrms_conveyorbelt_curved.mdl",
+	price = 200,
+	max = 5,
+	cmd = "buyzrms_conveyorbelt_c_right",
+	allowed = TEAM_ZRMINE_MINER,
+	category = "RetroMiner"
+})
